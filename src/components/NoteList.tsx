@@ -3,19 +3,17 @@ import {
   Badge,
   Button,
   Card,
-  CloseButton,
   Col,
   Form,
   Modal,
   Row,
   Stack,
-  Toast
 } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import ReactSelect from "react-select"
 import { Tag } from "../App"
 import styles from "./NoteList.module.css"
-import { toast } from "react-toastify"
+import { Toaster } from "react-hot-toast"
 
 type SimplifiedNote = {
   tags: Tag[]
@@ -63,6 +61,7 @@ export function NoteList({
 
   return (
     <>
+      <div><Toaster /></div>
       <Row className="align-items-center mb-4">
         <Col>
           <h1>Notes</h1>
@@ -81,12 +80,6 @@ export function NoteList({
           </Stack>
         </Col>
       </Row>
-      <Toast className="align-items-center mb-4 w-100">
-        <Toast.Body className="bg-success text-success bg-opacity-25 border border-success rounded-2">
-          <strong>SUCCESS!</strong> Note has been successfully deleted.
-          <CloseButton />
-        </Toast.Body>
-      </Toast>
       <Form>
         <Row className="mb-4">
           <Col>

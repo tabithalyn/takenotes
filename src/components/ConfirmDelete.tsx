@@ -1,7 +1,7 @@
 import { confirmAlert } from "react-confirm-alert";
 import { useNavigate } from 'react-router-dom';
 import { useNote } from "./NoteLayout";
-import { useState } from "react";
+import toast from "react-hot-toast";
 
 type NoteProps = {
   onDelete: (id: string) => void;
@@ -11,6 +11,8 @@ export default function confirmDelete({onDelete}: NoteProps) {
   const note = useNote();
   const navigate = useNavigate();
 
+  const notify = () => toast('Note deleted.')
+
   confirmAlert({
     title: 'Confirm Delete',
     message: `Are you sure you want to delete ${note.id}?`,
@@ -19,6 +21,7 @@ export default function confirmDelete({onDelete}: NoteProps) {
       {
         label: 'Delete',
         onClick: () => {
+          {notify}
           onDelete(note.id)
           navigate("/")
         }
